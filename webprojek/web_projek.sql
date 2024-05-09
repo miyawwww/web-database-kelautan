@@ -7,6 +7,7 @@
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
+use web_projek;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -57,17 +58,19 @@ INSERT INTO `registration` (`id`, `firstName`, `lastName`, `email`, `password`, 
 CREATE TABLE `search` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `Provinsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Dumping data for table `search`
 --
 
-INSERT INTO `search` (`id`, `title`, `description`) VALUES
-(1, 'pantai', 'is simply dummy text of the printing and typesetting industry.'),
-(2, 'wisata', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'),
-(3, 'Banda Neira', 'Contrary to popular belief, Lorem Ipsum is not simply random text.');
+INSERT INTO `search` (`id`, `title`, `description`, `Provinsi`) VALUES
+(1, 'pantai', 'is simply dummy text of the printing and typesetting industry.', 'Jawa Barat'),
+(2, 'wisata', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'Sumatra'),
+(3, 'Banda Neira', 'Contrary to popular belief, Lorem Ipsum is not simply random text.', 'Jawa Tengah');
 
 --
 -- Indexes for dumped tables
