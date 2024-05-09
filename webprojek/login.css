@@ -1,0 +1,89 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.container{
+    background: url(https://images.unsplash.com/photo-1457195740896-7f345efef228?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card{
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.card-primary{
+    background-color: lightblue;
+}
+
+.card-header{
+    margin-bottom: 20px;
+}
+
+.card-header h2{
+    margin: 0;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.form-control{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-primary{
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover{
+    background-color: gray;
+    transition: all 0.5s ease;
+}
+
+.card-footer{
+    margin-top: 20px;
+}
+
+.card-footer small{
+    font-size: 15px;
+    color: #000;
+}
+
+p{
+    margin-bottom: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
