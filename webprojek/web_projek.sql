@@ -59,7 +59,7 @@ CREATE TABLE `search` (
   `id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `description` text NOT NULL,
-  `Provinsi` text NOT NULL
+  `provinsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
@@ -67,7 +67,7 @@ CREATE TABLE `search` (
 -- Dumping data for table `search`
 --
 
-INSERT INTO `search` (`id`, `title`, `description`, `Provinsi`) VALUES
+INSERT INTO `search` (`id`, `title`, `description`, `provinsi`) VALUES
 (1, 'pantai', 'is simply dummy text of the printing and typesetting industry.', 'Jawa Barat'),
 (2, 'wisata', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.', 'Sumatra'),
 (3, 'Banda Neira', 'Contrary to popular belief, Lorem Ipsum is not simply random text.', 'Jawa Tengah');

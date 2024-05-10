@@ -2,7 +2,7 @@ let dropdownBtnText = document.getElementById("drop-text");
 let span = document.getElementById("span");
 let icon = document.getElementById("icon");
 let list = document.getElementById("list");
-let input = document.getElementById("search-input");
+let input = document.getElementById("searchinput");
 let listItems = document.querySelectorAll(".dropdown-list-item");
 
 dropdownBtnText.onclick = function () {
@@ -27,7 +27,7 @@ for (item of listItems) {
     if (e.target.innerText == "Everything") {
       input.placeholder = "Search Anything...";
     } else {
-      input.placeholder = "Search in " + e.target.innerText + "...";
+      input.placeholder =  e.target.innerText ;
     }
   };
 }

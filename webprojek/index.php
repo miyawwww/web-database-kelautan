@@ -6,11 +6,16 @@ define('DB1', 'web_projek');
 
 // Buat Koneksinya
 $db1 = new mysqli(HOST, USER, PASS, DB1);
-$query = " 
+$queryprov = " 
 SELECT provinsi FROM search
  ORDER BY provinsi ASC
  ";
-$result = $db1->query($query);
+$resultprov = $db1->query($queryprov);
+
+$querysearch = " 
+SELECT * FROM search
+ ";
+$resultsearch = $db1->query($querysearch);
 
 ?>
 
@@ -24,6 +29,8 @@ $result = $db1->query($query);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
@@ -71,25 +78,39 @@ $result = $db1->query($query);
                         </div>
                         <ul id="list" class="dropdown-list">
                             <?php
-                                foreach ($result as $row)
+                                foreach ($resultprov as $row)
                                 {
                                     echo '<li class="dropdown-list-item">"'.$row["provinsi"].'"</li>';
                                 }
                                 ?>
                         </ul>
                     </div>
-
-
-
                     <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Search Anything..."/>
+                        <input type="text" id="searchinput" placeholder="Search Anything..."/>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <tr></tr>
                 </div>
-
             </div>
         </div>
     </main>
+</section>
+<section class="popular-destination" id="popular">
+    <div class="card-container" >
+        <?php
+        foreach ($resultsearch as $row)
+        {
+            echo '<div class="card" id="showdata">
+
+                        <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">
+                        <div class="card-content" id="showdata">
+                            <h3>'.$row["title"].'</h3>
+                        <p>'.$row["description"].'</p>
+                        <p>'.$row["provinsi"].'</p>
+                        </div>
+                    </div>';
+        }
+        ?>
 </section>
 
 
@@ -114,43 +135,41 @@ $result = $db1->query($query);
 
 
 <!-- POPULAR-->
-<section class="popular-destination" id="popular">
-
-    <h1>Popular Destination</h1>
-    <p>Explore all these type of destinations to learn more.</p>
-    <p>The more you learn, the more you know.</p>
-
-    <div class="card-container">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">
-            <div class="card-content">
-                <h3>Banda Neira</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam.</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-        </div>
-        <div class="card-container">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">
-                <div class="card-content">
-                    <h3>Raja Ampat</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam.</p>
-                    <a href="" class="btn">Read More</a>
-                </div>
-            </div>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">
-                    <div class="card-content">
-                        <h3>Pink Beach</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam.</p>
-                        <a href="" class="btn">Read More</a>
-                    </div>
-                </div>
-            </div>
-
-
-</section>
+<!--<section class="popular-destination" id="popular">-->
+<!---->
+<!--    <h1>Popular Destination</h1>-->
+<!--    <p>Explore all these type of destinations to learn more.</p>-->
+<!--    <p>The more you learn, the more you know.</p>-->
+<!---->
+<!--    <div class="card-container">-->
+<!--        <div class="card">-->
+<!---->
+<!--            <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">-->
+<!--            <div class="card-content">-->
+<!--                <h3>Banda Neira</h3>-->
+<!--                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam.</p>-->
+<!--                <a href="" class="btn">Read More</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="card-container">-->
+<!--            <div class="card">-->
+<!--                <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">-->
+<!--                <div class="card-content">-->
+<!--                    <h3>Raja Ampat</h3>-->
+<!--                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quisquam.</p>-->
+<!--                    <a href="" class="btn">Read More</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="card-container">-->
+<!--                <div class="card">-->
+<!--                    <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">-->
+<!--                    <div class="card-content">-->
+<!---->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!---->
+<!--</section>-->
 
 
 <!-- GALLERY -->
@@ -199,7 +218,22 @@ $result = $db1->query($query);
         </div>
     </footer>
 
-
+    <script>
+        $(document).ready(function(){
+            $('#searchinput').on("keyup", function(){
+                var searchinput = $(this).val();
+                $.ajax({
+                    method:'POST',
+                    url:'searchajax.php',
+                    data:{name:searchinput},
+                    success:function(response)
+                    {
+                        $("#showdata").html(response);
+                    }
+                });
+            });
+        });
+    </script>
     <!-- JS SCRIPT-->
     <script src="script.js"></script>
 </body>
