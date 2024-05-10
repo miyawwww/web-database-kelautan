@@ -80,37 +80,41 @@ $resultsearch = $db1->query($querysearch);
                             <?php
                                 foreach ($resultprov as $row)
                                 {
-                                    echo '<li class="dropdown-list-item">"'.$row["provinsi"].'"</li>';
+                                    echo '<li class="dropdown-list-item">"'.$row['provinsi'].'"</li>';
                                 }
                                 ?>
                         </ul>
                     </div>
+                    <form method="GET" action="index.php">
                     <div class="search-box">
-                        <input type="text" id="searchinput" placeholder="Search Anything..."/>
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="searchinput" name="searchinput" placeholder="Search Anything..." value=""/>
+                        <button type="submit" class="fa-solid fa-magnifying-glass"></button>
                     </div>
-                    <tr></tr>
+
+                    </form>
                 </div>
-            </div>
         </div>
     </main>
-</section>
 <section class="popular-destination" id="popular">
     <div class="card-container" >
         <?php
-        foreach ($resultsearch as $row)
-        {
-            echo '<div class="card" id="showdata">
-
+        $querycari = "SELECT * FROM search";
+        if (isset($_GET['searchinput'])){
+            $pencarian = $_GET['searchinput'];
+            $querycari = "SELECT * FROM search WHERE provinsi LIKE '%".$pencarian."%'";
+        }
+        $data = mysqli_query($db1,$querycari);
+        while($row = mysqli_fetch_array($data)){
+            ?>
+                <div class="card">
                         <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="gambar">
                         <div class="card-content" id="showdata">
-                            <h3>'.$row["title"].'</h3>
-                        <p>'.$row["description"].'</p>
-                        <p>'.$row["provinsi"].'</p>
+                            <h3><?php echo $row['title'];?></h3>
+                        <p><?php echo $row['description'];?></p>
+                        <p><?php echo $row['provinsi'];?></p>
                         </div>
-                    </div>';
-        }
-        ?>
+                    </div>
+        <?php } ?>
 </section>
 
 

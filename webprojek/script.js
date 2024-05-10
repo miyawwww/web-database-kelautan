@@ -24,10 +24,12 @@ window.onclick = function (e) {
 for (item of listItems) {
   item.onclick = function (e) {
     span.innerText = e.target.innerText;
+    console.log(e.target.innerText)
     if (e.target.innerText == "Everything") {
       input.placeholder = "Search Anything...";
     } else {
-      input.placeholder =  e.target.innerText ;
+      let result = e.target.innerText.replaceAll('"','')
+      input.value = result ;
     }
   };
 }
